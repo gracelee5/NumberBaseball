@@ -2,7 +2,12 @@
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        proup: ["Cafe24ProUp", "sans-serif"],
+        dunggeunmo: ["RoundedFixedsys", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "../index.css";
 
 const generateNumber = (len: number) => {
   let num = "";
@@ -68,78 +69,80 @@ const GamePage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-8">
-      <div className="w-full max-w-sm mb-4">
-        <h2 className="text-3xl font-bold text-gray-700 text-center mb-4">
-          {length}자리 숫자 야구
-        </h2>
-        <div className="border border-gray-400 rounded-lg p-3 text-center text-3xl tracking-widest font-mono">
-          {/* 사용자가 입력한 숫자 */}
-          <span className="text-black">{guess}</span>
-          {/* 남은 자릿수를 빈 공간으로 표시 */}
-          <span className="text-gray-400">
-            {" _".repeat(length - guess.length)}
+    <div className=" main-bg flex flex-col items-center justify-center min-h-screen bg-gray-100 p-8 font-dunggeunmo">
+      <div className="bg-gray-100/80 p-5 w-96 rounded-lg flex flex-col items-center justify-center">
+        <div className="w-full max-w-sm mb-4 ">
+          <h2 className="text-3xl font-bold text-gray-700 text-center mb-4">
+            숫자 야구 ({length}자리)
+          </h2>
+          <div className="bg-gray-100 rounded-lg p-3 text-center text-3xl tracking-widest  shadow-lg">
+            {/* 사용자가 입력한 숫자 */}
+            <span className="text-black">{guess}</span>
+            {/* 남은 자릿수를 빈 공간으로 표시 */}
+            <span className="text-gray-400">
+              {" _".repeat(length - guess.length)}
+            </span>
+          </div>
+        </div>
+        <div className="w-full max-w-sm flex justify-end items-center mb-2 mr-5">
+          <span className="text-lg font-semibold text-black-500">
+            {chances}/9
           </span>
         </div>
-      </div>
-      <div className="w-full max-w-sm flex justify-end items-center mb-2 mr-5">
-        <span className="text-lg font-semibold text-black-500">
-          {chances}/9
-        </span>
-      </div>
-      <div className="w-full max-w-sm h-80 bg-white rounded-lg shadow-lg p-4 overflow-y-auto mb-8">
-        {history.length > 0 ? (
-          <ul className="space-y-2">
-            {history.map((record, index) => (
-              <li
-                key={index}
-                className="flex justify-between items-center text-lg"
-              >
-                <span>{record.guess}</span>
-                <span
-                  className={`font-semibold ${
-                    record.strikes === length
-                      ? "text-green-600"
-                      : "text-red-500"
-                  }`}
+        <div className="w-full max-w-sm h-64 bg-amber-100 rounded-lg shadow-lg py-4 px-8  overflow-y-auto mb-8">
+          {history.length > 0 ? (
+            <ul className="space-y-2">
+              {history.map((record, index) => (
+                <li
+                  key={index}
+                  className="flex justify-between items-center text-lg border-b border-amber-900"
                 >
-                  {record.strikes}S {record.balls}B
-                </span>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div></div>
-        )}
-      </div>
-
-      {/* 하단: 0~9 숫자 버튼 */}
-      <div className="w-full max-w-sm">
-        <div className="grid grid-cols-5 gap-3">
-          {/* 0부터 9까지의 숫자 버튼 */}
-          {Array.from({ length: 10 }, (_, i) => i).map((number) => (
-            <button
-              key={number}
-              className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-4 rounded-lg text-2xl transition-colors"
-              onClick={() => handleNumberClick(number)}
-            >
-              {number}
-            </button>
-          ))}
+                  <span>{record.guess}</span>
+                  <span
+                    className={`font-semibold ${
+                      record.strikes === length
+                        ? "text-green-600"
+                        : "text-red-500"
+                    }`}
+                  >
+                    {record.strikes}S {record.balls}B
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div></div>
+          )}
         </div>
-        <div className="flex space-x-3 mt-4">
-          <button
-            className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg transition-colors"
-            onClick={handleDeleteClick}
-          >
-            지우기
-          </button>
-          <button
-            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-lg transition-colors"
-            onClick={handleSubmitClick}
-          >
-            확인
-          </button>
+
+        {/* 하단: 0~9 숫자 버튼 */}
+        <div className="w-full max-w-sm">
+          <div className="grid grid-cols-5 gap-3">
+            {/* 0부터 9까지의 숫자 버튼 */}
+            {Array.from({ length: 10 }, (_, i) => i).map((number) => (
+              <button
+                key={number}
+                className="bg-gray-100 hover:bg-gray-300 text-gray-800 font-bold py-4 rounded-lg text-2xl transition-colors"
+                onClick={() => handleNumberClick(number)}
+              >
+                {number}
+              </button>
+            ))}
+          </div>
+          <div className="flex space-x-3 mt-4">
+            <button
+              className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg transition-colors"
+              onClick={handleDeleteClick}
+            >
+              지우기
+            </button>
+            <button
+              className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-lg transition-colors"
+              onClick={handleSubmitClick}
+            >
+              제출
+            </button>
+          </div>
         </div>
       </div>
     </div>

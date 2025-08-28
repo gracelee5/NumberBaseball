@@ -61,9 +61,7 @@ const GamePage = () => {
       alert("정답입니다!");
       navigate("/");
     } else if (chances - 1 === 0) {
-      alert(
-        `아쉽네요! 9번의 기회를 모두 사용했습니다. 정답은 ${secretNumber}였습니다.`
-      );
+      alert(`9번의 기회를 모두 사용했습니다. 정답은 ${secretNumber}였습니다.`);
       navigate("/"); // 메인 페이지로 이동
     }
   };

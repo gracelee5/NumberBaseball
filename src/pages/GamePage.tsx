@@ -70,7 +70,7 @@ const GamePage = () => {
 
   return (
     <div className=" main-bg flex flex-col items-center justify-center min-h-screen bg-gray-100 p-8 font-dunggeunmo">
-      <div className="bg-gray-100/80 p-5 w-96 rounded-lg flex flex-col items-center justify-center">
+      <div className="bg-gray-100/80 p-5 w-80 rounded-lg flex flex-col items-center justify-center">
         <div className="w-full max-w-sm mb-4 ">
           <h2 className="text-3xl font-bold text-gray-700 text-center mb-4">
             숫자 야구 ({length}자리)
@@ -89,7 +89,7 @@ const GamePage = () => {
             {chances}/9
           </span>
         </div>
-        <div className="w-full max-w-sm h-64 bg-amber-100 rounded-lg shadow-lg py-4 px-8  overflow-y-auto mb-8">
+        <div className="w-full max-w-sm h-[200px] bg-amber-100 rounded-lg shadow-lg py-4 px-8  overflow-y-auto mb-4">
           {history.length > 0 ? (
             <ul className="space-y-2">
               {history.map((record, index) => (
@@ -122,7 +122,7 @@ const GamePage = () => {
             {Array.from({ length: 10 }, (_, i) => i).map((number) => (
               <button
                 key={number}
-                className="bg-gray-100 hover:bg-gray-300 text-gray-800 font-bold py-4 rounded-lg text-2xl transition-colors"
+                className="bg-gray-100 hover:bg-gray-300 text-gray-800 font-bold py-2 rounded-lg text-2xl transition-colors"
                 onClick={() => handleNumberClick(number)}
               >
                 {number}
@@ -131,13 +131,13 @@ const GamePage = () => {
           </div>
           <div className="flex space-x-3 mt-4">
             <button
-              className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-lg transition-colors"
+              className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-lg transition-colors"
               onClick={handleDeleteClick}
             >
               지우기
             </button>
             <button
-              className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-lg transition-colors"
+              className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded-lg transition-colors"
               onClick={handleSubmitClick}
             >
               제출
